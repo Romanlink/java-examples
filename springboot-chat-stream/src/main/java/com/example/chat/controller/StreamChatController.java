@@ -31,6 +31,6 @@ public class StreamChatController {
      */
     @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> streamChat(@RequestParam String prompt) {
-        return chatService.streamResponse(prompt);
+        return chatService.streamResponseForEno(prompt, true);
     }
 }
