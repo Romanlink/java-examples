@@ -2,8 +2,9 @@ package com.example.chat.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.chat.gpt.*;
-import com.example.chat.gpt.engin.deepseek.EnoAiChatRequest;
-import com.example.chat.gpt.engin.deepseek.EnoAiClient;
+import com.example.chat.gpt.engin.EnoAiChatRequest;
+import com.example.chat.gpt.engin.deepseek.DeepseekClient;
+import com.example.chat.gpt.engin.ollama.qwen.OllamaQwenClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,10 @@ public class StreamChatService implements CompletedCallBack{
 
 
     @Autowired
-    private EnoAiClient enoAiClient;
+    private DeepseekClient enoAiClient;
+
+    @Autowired
+    private OllamaQwenClient ollamaQwenClient;
 
     /**
      * 模拟大模型流式生成响应
@@ -114,7 +118,8 @@ public class StreamChatService implements CompletedCallBack{
         Message userMessage = new Message(MessageType.TEXT, UserType.USER, jsonObject.toJSONString(), chatContent);
         return Flux.create(it -> {
             ChatSubscriber subscriber = new ChatSubscriber(it, this, userMessage, chatId, chatContent);
-            Flux<String> openAiResponse = enoAiClient.getDeepSeekChatResponse(q);
+//            Flux<String> openAiResponse = enoAiClient.getDeepSeekChatResponse(q);
+            Flux<String> openAiResponse = ollamaQwenClient.getOllamaChatResponse(q);
             openAiResponse.subscribe(subscriber);
             it.onDispose(() -> subscriber.cancel());
         });

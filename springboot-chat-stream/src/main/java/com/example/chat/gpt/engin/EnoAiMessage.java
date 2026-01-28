@@ -1,4 +1,4 @@
-package com.example.chat.gpt.engin.deepseek;
+package com.example.chat.gpt.engin;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

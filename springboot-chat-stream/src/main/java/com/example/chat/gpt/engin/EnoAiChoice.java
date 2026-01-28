@@ -1,6 +1,7 @@
-package com.example.chat.gpt.engin.deepseek;
+package com.example.chat.gpt.engin;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.example.chat.gpt.engin.EnoAiMessage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

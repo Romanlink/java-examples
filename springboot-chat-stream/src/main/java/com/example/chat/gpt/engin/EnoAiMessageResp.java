@@ -1,4 +1,4 @@
-package com.example.chat.gpt.engin.deepseek;
+package com.example.chat.gpt.engin;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.example.chat.gpt.engin.deepseek;
+package com.example.chat.gpt.engin.ollama.qwen;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
@@ -12,8 +12,8 @@ import java.io.Serializable;
  */
 @Component
 @PropertySource("classpath:/gpt/${spring.profiles.active}/eno_client_config.properties")
-@ConfigurationProperties(prefix = "eno")
-public class EnoAiClientConfig implements Serializable {
+@ConfigurationProperties(prefix = "qwen")
+public class OllamaQwenClientConfig implements Serializable {
 
     /**
      * 请求地址host

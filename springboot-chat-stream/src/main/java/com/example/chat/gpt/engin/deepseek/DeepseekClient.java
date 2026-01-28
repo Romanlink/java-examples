@@ -2,8 +2,6 @@ package com.example.chat.gpt.engin.deepseek;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.example.chat.gpt.ApiConstant;
-import com.example.chat.gpt.HttpUtils;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
@@ -15,7 +13,6 @@ import org.springframework.http.client.reactive.ClientHttpConnector;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
@@ -25,7 +22,6 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import javax.net.ssl.SSLException;
 import java.io.IOException;
-import java.util.HashMap;
 
 /**
  * @author liangwang
@@ -33,7 +29,7 @@ import java.util.HashMap;
  */
 @Slf4j
 @Component
-public class EnoAiClient {
+public class DeepseekClient {
 
 
     private WebClient webClient;
@@ -42,7 +38,7 @@ public class EnoAiClient {
     private String env;
 
     @Resource
-    EnoAiClientConfig clientConfig;
+    DeepseekClientConfig clientConfig;
     /**
      * dev采用代理访问
      */
